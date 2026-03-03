@@ -8,7 +8,7 @@
 </h1>
 
 <h3>Creative Machine Learning in MaxMSP and Ableton Live.</h3>
-
+</div>
 
 <center>
 <i>Course given at IRCAM in March 2026 by <a href="http://esling.github.io" target="_blank">Axel Chemla-Romeu-Santos</a> and Nils Demerlé</i>
@@ -37,11 +37,10 @@ This course provides a brief history of the development of artificial intelligen
 
 To complement the slides, two browser-based interactive demos are available:
 
-**Polynomial Regression** – Basic machine learning problem of polynomial regression with gradient descent.
-https://nilsdem.github.io/CreativeML_MaxMsp/linear_regression/
+**[Polynomial Regression](https://nilsdem.github.io/CreativeML_MaxMsp/linear_regression/)** – Basic machine learning problem of polynomial regression with gradient descent.
 
-**MNIST VAE Playground** – Train a small VAE on the Mnist dataset and explore its 2D latent space. 
-https://nilsdem.github.io/CreativeML_MaxMsp/mnist_vae/
+
+**[MNIST VAE Playground](https://nilsdem.github.io/CreativeML_MaxMsp/mnist_vae/)** – Train a small VAE on the Mnist dataset and explore its 2D latent space. 
 
 
 
