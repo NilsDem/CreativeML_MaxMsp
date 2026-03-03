@@ -1,0 +1,238 @@
+:root {
+  --bg: #050506;
+  --panel: #111214;
+  --text: #f5f5f7;
+  --muted: #a8adb8;
+  --train: #4ecdc4;
+  --validation: #ffd166;
+  --truth: #9ca3af;
+  --fit: #f43f5e;
+  --border: #252932;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", Tahoma, sans-serif;
+  background: radial-gradient(circle at 15% 20%, #12141a 0%, var(--bg) 40%, #000000 100%);
+  color: var(--text);
+}
+
+.app {
+  width: min(1100px, 96vw);
+  margin: 20px auto 28px;
+  background: linear-gradient(145deg, rgba(24, 27, 33, 0.9), rgba(11, 12, 14, 0.95));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 8px 0 18px;
+  min-height: 1rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.control {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+label {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.toggles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.check {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check input {
+  width: 16px;
+  height: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+button {
+  border: 1px solid #3d4452;
+  background: #1d2230;
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #262d3d;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.equation {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #0b0d11;
+  color: var(--muted);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 0.93rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+  margin: 0 0 12px;
+}
+
+.stat-item {
+  background: #0b0d11;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+#trainLossText {
+  color: var(--train);
+}
+
+#valLossText {
+  color: var(--validation);
+}
+
+.plot-wrap {
+  background: #090a0c;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+canvas {
+  width: min(100%, 620px);
+  aspect-ratio: 1 / 1;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: #050608;
+}
+
+.legend {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot,
+.line {
+  display: inline-block;
+  width: 16px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.train {
+  background: var(--train);
+}
+
+.dot.validation {
+  background: var(--validation);
+}
+
+.line.true {
+  background: var(--truth);
+}
+
+.line.fit {
+  background: var(--fit);
+}
+
+.line.residual {
+  background: linear-gradient(90deg, var(--train), var(--validation));
+}
+
+@media (max-width: 720px) {
+  .app {
+    margin: 10px auto 18px;
+    padding: 14px;
+  }
+
+  .actions {
+    grid-column: 1 / -1;
+  }
+}

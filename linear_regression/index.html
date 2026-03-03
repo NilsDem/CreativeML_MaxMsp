@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Underfitting vs Overfitting</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Polynomial Regression</h1>
+      <p class="subtitle"></p>
+
+      <section class="controls" aria-label="controls">
+        <div class="control">
+          <label for="degreeSlider">Polynomial degree: <span id="degreeValue">1</span></label>
+          <input id="degreeSlider" type="range" min="1" max="30" step="1" value="1" />
+        </div>
+
+        <div class="control">
+          <label for="noiseSlider">Noise level: <span id="noiseValue">0.20</span></label>
+          <input id="noiseSlider" type="range" min="0" max="1" step="0.01" value="0.20" />
+        </div>
+
+        <div class="control">
+          <label for="learningRateSlider">Learning rate: <span id="learningRateValue">0.100</span></label>
+          <input id="learningRateSlider" type="range" min="0.001" max="1.500" step="0.001" value="0.100" />
+        </div>
+
+        <div class="control">
+          <label for="pointsSlider">Data points: <span id="pointsValue">70</span></label>
+          <input id="pointsSlider" type="range" min="10" max="220" step="1" value="70" />
+        </div>
+
+        <div class="control">
+          <label for="valSplitSlider">Validation split: <span id="valSplitValue">30%</span></label>
+          <input id="valSplitSlider" type="range" min="0" max="50" step="1" value="30" />
+        </div>
+
+        <div class="control toggles">
+          <label class="check" for="showTruthToggle">
+            <input id="showTruthToggle" type="checkbox" checked />
+            Show ground-truth curve
+          </label>
+          <label class="check" for="showFitToggle">
+            <input id="showFitToggle" type="checkbox" checked />
+            Show estimated curve
+          </label>
+          <label class="check" for="showDistanceToggle">
+            <input id="showDistanceToggle" type="checkbox" />
+            Show distance to estimated curve
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn" type="button">Generate data</button>
+          <button id="trainBtn" type="button">Train model</button>
+        </div>
+      </section>
+
+      <p id="equationText" class="equation">Equation: train model to show coefficients.</p>
+      <section class="stats" aria-label="training stats">
+        <div class="stat-item">
+          <span class="stat-label">Train MSE</span>
+          <span id="trainLossText" class="stat-value">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Validation MSE</span>
+          <span id="valLossText" class="stat-value">-</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Epoch</span>
+          <span id="epochText" class="stat-value">-</span>
+        </div>
+      </section>
+
+      <section class="plot-wrap" aria-label="plot">
+        <canvas id="plotCanvas" width="900" height="900"></canvas>
+        <div class="legend">
+          <span><i class="dot train"></i>Train points</span>
+          <span><i class="dot validation"></i>Validation points</span>
+          <span><i class="line true"></i>True quadratic</span>
+          <span><i class="line fit"></i>Model fit</span>
+          <span><i class="line residual"></i>Point distance to fit</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

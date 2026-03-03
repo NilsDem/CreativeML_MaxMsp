@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MNIST VAE Trainer + Latent Explorer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <h1>MNIST VAE Trainer + Latent Explorer</h1>
+      <p class="subtitle">Train a 2D VAE in-browser, then move on the latent canvas to decode digits.</p>
+      <p class="subtitle">
+        Attribution: inspired by
+        <a href="https://github.com/tayden/VAE-Latent-Space-Explorer" target="_blank" rel="noopener noreferrer">
+          tayden/VAE-Latent-Space-Explorer
+        </a>
+      </p>
+
+      <section class="controls">
+        <div class="panel">
+          <h2>Data + Models</h2>
+          <div class="buttons">
+            <button id="loadDataBtn">Load MNIST Data</button>
+            <button id="trainBtn">Train VAE</button>
+            <button id="saveBtn">Save to IndexedDB</button>
+            <button id="loadSavedBtn">Load Saved Model</button>
+          </div>
+          <p id="statusText" class="status">Waiting.</p>
+          <progress id="trainProgress" max="100" value="0"></progress>
+          <p id="progressText" class="hint">Progress: 0%</p>
+        </div>
+
+        <div class="panel">
+          <h2>Training Settings</h2>
+          <label>Epochs <input id="epochsInput" type="number" min="1" max="200" step="1" value="8" /></label>
+          <label>Steps/Epoch <input id="stepsInput" type="number" min="10" max="2000" step="10" value="180" /></label>
+          <label>Batch Size <input id="batchInput" type="number" min="16" max="512" step="16" value="128" /></label>
+          <label>Learning Rate <input id="lrInput" type="number" min="0.0001" max="0.01" step="0.0001" value="0.0010" /></label>
+          <label>KL Weight <input id="klInput" type="number" min="0.1" max="5" step="0.1" value="1.0" /></label>
+          <label>Plot Sample Size <input id="plotCountInput" type="number" min="200" max="10000" step="100" value="2000" /></label>
+        </div>
+      </section>
+
+      <section class="viz">
+        <article class="panel plot-panel">
+          <h2>Latent Space (2D)</h2>
+          <canvas id="latentCanvas" width="560" height="560"></canvas>
+          <p class="hint">Hover over the plot to decode at that latent coordinate.</p>
+          <p id="hoverText" class="hint">z = (0.00, 0.00)</p>
+        </article>
+
+        <article class="panel decode-panel">
+          <h2>Decoded Digit</h2>
+          <canvas id="decodeCanvas" width="280" height="280"></canvas>
+          <h2 class="subhead">Epoch Preview (Input vs Reconstruction)</h2>
+          <div class="epoch-preview">
+            <div>
+              <p class="hint">Input</p>
+              <canvas id="epochInputCanvas" width="140" height="140"></canvas>
+            </div>
+            <div>
+              <p class="hint">Reconstruction</p>
+              <canvas id="epochReconCanvas" width="140" height="140"></canvas>
+            </div>
+          </div>
+          <p id="epochPreviewText" class="hint">No epoch preview yet.</p>
+        </article>
+      </section>
+
+      <section class="panel log-panel">
+        <h2>Training Log</h2>
+        <div id="log"></div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
