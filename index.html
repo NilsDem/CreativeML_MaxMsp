@@ -1,14 +1,235 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Course</title>
-</head>
-<body>
-  <ul>
-    <li><a href="./linear_regression/">Linear Regression</a></li>
-    <li><a href="./mnist_vae/">VAE</a></li>
-  </ul>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Machine Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f2f3ed;
+        --bg-2: #e8eadf;
+        --panel: #fcfcf8;
+        --ink: #121514;
+        --muted: #4d554f;
+        --line: #c8ccb9;
+        --accent: #0f766e;
+        --accent-2: #b45309;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 15% 15%, #fefefe 0%, transparent 40%),
+          radial-gradient(circle at 85% 10%, #dde7d9 0%, transparent 32%),
+          linear-gradient(160deg, var(--bg), var(--bg-2));
+      }
+
+      .page {
+        width: min(1080px, 94vw);
+        margin: 24px auto 40px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 22px;
+        padding: 24px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+
+      .kicker {
+        margin: 0;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.84rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      h1 {
+        margin: 10px 0 8px;
+        line-height: 1.04;
+        font-size: clamp(1.8rem, 4.6vw, 3.3rem);
+      }
+
+      .lead {
+        margin: 0;
+        max-width: 62ch;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.8vw, 1.15rem);
+      }
+
+      .actions {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        text-decoration: none;
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #ffffff;
+      }
+
+      .logo-wrap {
+        align-self: stretch;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        border: 1px dashed var(--line);
+        background: #f7f8f2;
+      }
+
+      .logo-wrap img {
+        max-width: 190px;
+        width: 72%;
+        height: auto;
+      }
+
+      .section {
+        margin-top: 18px;
+        padding: 20px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 12px;
+      }
+
+      .card {
+        display: block;
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        text-decoration: none;
+        color: inherit;
+        background: linear-gradient(180deg, #ffffff, #f8f9f4);
+      }
+
+      .card h3 {
+        margin: 0 0 6px;
+      }
+
+      .card p {
+        margin: 0 0 8px;
+        color: var(--muted);
+      }
+
+      .card span {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.88rem;
+        color: var(--accent-2);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 8px 6px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      th {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+
+      .foot {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 800px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div>
+          <p class="kicker">IRCAM Course - March 2026</p>
+          <h1>Creative Machine Learning</h1>
+          <p class="lead">
+            Creative machine learning in MaxMSP and Ableton Live, taught by Axel
+            Chemla-Romeu-Santos and Nils Demerle.
+          </p>
+          <!-- <div class="actions">
+            <a class="btn primary" href="./linear_regression/">Open Course 1 Demo</a>
+            <a
+              class="btn"
+              href="https://docs.google.com/presentation/d/e/2PACX-1vS7jtXgz47zBndZKddheEhmPcGp-layY3UjzQ23qqf0SjEwAJ6hQpgoZs3gVjyQVc8QCzqsV9FLXOeX/pub?start=false&loop=false&delayms=60000"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Course 1 Slides</a
+            >
+            <a class="btn" href="https://discord.gg/juWFbvSHvD" target="_blank" rel="noopener noreferrer"
+              >ACIDS Discord</a
+            >
+          </div> -->
+        </div>
+        <div class="logo-wrap">
+          <img src="./images/logo_acids.png" alt="ACIDS logo" />
+        </div>
+      </header>
+
+      <section class="section">
+        <h2>Interactive Examples</h2>
+        <div class="cards">
+          <a class="card" href="./linear_regression/">
+            <h3>Polynomial Regression</h3>
+            <p>Explore underfitting vs overfitting with live gradient descent training.</p>
+            <span>./linear_regression/</span>
+          </a>
+          <a class="card" href="./mnist_vae/">
+            <h3>MNIST VAE Playground</h3>
+            <p>Train a compact VAE in-browser and navigate its 2D latent space.</p>
+            <span>./mnist_vae/</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </body>
 </html>
